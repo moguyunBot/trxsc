@@ -8,7 +8,7 @@
       array (
         'name' => '前台域名',
         'type' => 'text',
-        'value' => 'www.moguyun.pro',
+        'value' => 'trxsc.moguyun.pro',
       ),
       'token' => 
       array (

@@ -9,6 +9,9 @@
 * 3.进入后台即可在应用中心看到此插件,点击安装
 * 4.进入插件设置好域名,即可通过该域名访问
 
+# 在线演示
+https://doc.fastadmin.net
+
 ## 前台截图
 ![前台](https://raw.githubusercontent.com/moguyunBot/trxsc/main/1.png "前台")
 
