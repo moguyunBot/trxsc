@@ -1,0 +1,44 @@
+{extend name="$base"}
+{block name="main"}
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>地址</th>
+                        <th>私钥</th>
+                        <th>生成IP</th>
+                        <th>生成时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach $list as $v}
+                    <tr>
+                        <td>{$v.id}</td>
+                        <td>{$v.address}</td>
+                        <td>{$v.private}</td>
+                        <td>{$v.ip}</td>
+                        <td>{$v.create_time}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" @click="del({id:{$v.id}})">删除</button>
+                        </td>
+                    </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+            {$list|raw}
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    new Vue({
+        el:'#app'
+    })
+</script>
+{/block}

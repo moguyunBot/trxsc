@@ -1,0 +1,110 @@
+{extend name="$base"}
+{block name="title"}{:config('trxsc_basic.token')}{/block}
+{block name="keywords"}{:config('trxsc_basic.keywords')}{/block}
+{block name="description"}{:config('trxsc_basic.description')}{/block}
+{block name="main"}
+<div class="container">
+    <div class="text-center">
+        <h1>TRX靓号地址生成器</h1>
+    </div>
+    <div style="font-size: large;">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_after" v-model="after" @change="afterChange" value="zdy"/>
+                        <label class="form-check-label" for="zdy_after">自定义后缀</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_3lh" v-model="after" @change="afterChange" value="3"/>
+                        <label class="form-check-label" for="zdy_3lh">3连号</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_4lh" v-model="after" @change="afterChange" value="4"/>
+                        <label class="form-check-label" for="zdy_4lh">4连号</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_5lh" v-model="after" @change="afterChange" value="5"/>
+                        <label class="form-check-label" for="zdy_5lh">5连号</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_6lh" v-model="after" @change="afterChange" value="6"/>
+                        <label class="form-check-label" for="zdy_6lh">6连号</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_7lh" v-model="after" @change="afterChange" value="7"/>
+                        <label class="form-check-label" for="zdy_7lh">7连号</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="zdy_8lh" v-model="after" @change="afterChange" value="8"/>
+                        <label class="form-check-label" for="zdy_8lh">8连号</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" v-model="suffix" rows="5" placeholder="后缀(多个以英文逗号分割)"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="daxiaoxie" v-model="daxiaoxie"/>
+                        <label class="form-check-label" for="daxiaoxie">是否区分大小写</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-info" @click="xiancheng--">-</button>
+                    <input type="text" v-model="xiancheng" style="width: 30px;">
+                    <button type="button" class="btn btn-info" @click="xiancheng++">+</button>
+                    线程
+                </div>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="query_stop" v-model="query_stop"/>
+                        <label class="form-check-label" for="query_stop">找到即停</label>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-info" @click="start" :disabled="start_status==true">生成</button>
+                    <button type="button" class="btn btn-secondary" @click="stop" :disabled="start_status!=true">停止</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    已生成:<b class="ml-2">{{yishengcheng}}</b>
+                </div>
+                <div>
+                    速度:<b class="ml-2">{{sudu}} 地址 / 秒</b>
+                </div>
+                <div>
+                    状态:<b class="ml-2">{{start_status==true?'运行中':'已停止'}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-for="(v,k) in address" class="mb-2">
+        <div class="card">
+            <div class="card-body">
+                <div style="display: flex;justify-content: space-between;" class="mb-2">
+                    <div>
+                        钱包地址:<b class="ml-2" :id="'address'+k">{{v.address}}</b>
+                    </div>
+                    <div>
+                        <button class="btn btn-success btn-xs" @click="copy('address'+k,k)">复制</button>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div>
+                        私钥:<b class="ml-2" :id="'privateKeyHex'+k">{{v.privateKeyHex}}</b>
+                    </div>
+                    <div>
+                        <button class="btn btn-success btn-xs" @click="copy('privateKeyHex'+k,k)">复制</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script src="/addons/trxsc/static/js/index.js"></script>
+{/block}
