@@ -10,4 +10,8 @@
 * 4.进入插件设置好域名,即可通过该域名访问
 
 ## 前台截图
-![控制台](https://images.gitee.com/uploads/images/2020/0929/202947_8db2d281_10933.gif "控制台")
+![前台](https://raw.githubusercontent.com/moguyunBot/trxsc/main/1.png "前台")
+
+
+## 后台截图
+![前台](https://raw.githubusercontent.com/moguyunBot/trxsc/main/2.png "前台")
