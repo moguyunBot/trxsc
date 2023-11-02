@@ -13,7 +13,7 @@
 * 4.进入插件设置好域名,即可通过该域名访问
 
 # 在线演示
-https://doc.fastadmin.net
+https://trxsc.moguyun.pro
 
 ## 前台截图
 ![前台](https://raw.githubusercontent.com/moguyunBot/trxsc/main/1.png "前台")
